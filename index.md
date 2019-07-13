@@ -11,6 +11,7 @@
 1. 在com.example包下面分别创建service、controller、entity和dao（mapper）包
 2. entity下面定义book类
 3. dao包下定义一个BookMapper的接口，在内部定义一个返回值为List<Book>的findAll方法，类上面加上@Repository注解
+
 ```
 @Reposity
 public interface BookMapper{
@@ -18,7 +19,7 @@ public interface BookMapper{
 }
 ```
 4. service包下面创建一个BookService接口，写一个同上的方法。再在包下创建一个impl包，在里面定义一个BookServiceImpl类，实现BookService接口，使用@Service注解，里面用@Autowried引入一个BookMapper对象，重写接口的方法，方法内部用bookMapper调用findAll方法
-
+    
 ```
 @Service
 public class BookServiceImpl implements BookService {
@@ -34,6 +35,7 @@ public class BookServiceImpl implements BookService {
 ```
 5. 在controller定义一个BookController类，在里面定义一个BookController类，使用@RestController注解，里面用@Autowried引入一个BookService对象，定义一个方法，里面使用bookService调用findAll
 注意controller这里面，有一个注解是@RequestMapping，里面的参数就是到时候网址需要访问的地址，如果在类上面设置了，则该类里面所有方法都要在这个地址后面，如类上注解了("/book"),方法上面注解了("/list")，网址就需要/book/list才可以访问这个方法
+
 ```
 @RestController
 @RequestMapping("/book")
@@ -52,12 +54,14 @@ public class BookController {
 6. 配置文件
 删除application.properties,创建application.yml和application-dev.yml
 appliction.yml
+
 ```
 spring:
   profiles:
     active: dev
 ```
 application-dev.yml
+
 ```
 server:
   port: 8080
@@ -80,9 +84,11 @@ logging:
       example:
         mapper : debug
 ```
+
 其中datasource下面的几个参数是自己数据库的参数，可以根据之前的jdbc的几个参数填过来。
 
 在resources目录下创建文件夹com/example/dao,再在这下面创建文件BookMapper.xml
+
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -94,6 +100,7 @@ logging:
 
 </mapper>
 ```
+
 7. 在DemoApplication的主类上面加上@MapperScan("com.example.dao")注解
 8. 运行DemoAplication
 9. 打开浏览器，访问localhost:8080/book/list
