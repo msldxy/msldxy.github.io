@@ -34,7 +34,6 @@ public class BookServiceImpl implements BookService {
 ```
 5. 在controller定义一个BookController类，在里面定义一个BookController类，使用@RestController注解，里面用@Autowried引入一个BookService对象，定义一个方法，里面使用bookService调用findAll
 注意controller这里面，有一个注解是@RequestMapping，里面的参数就是到时候网址需要访问的地址，如果在类上面设置了，则该类里面所有方法都要在这个地址后面，如类上注解了("/book"),方法上面注解了("/list")，网址就需要/book/list才可以访问这个方法
-
 ```
 @RestController
 @RequestMapping("/book")
