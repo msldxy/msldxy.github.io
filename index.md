@@ -1,116 +1,72 @@
-# 垂垂加油
-## Springboot + Mybatis整合
+# <div align="center">唐凌_JAVA开发工程师<div>
 
-* 第一步  创建Spring Initializr项目
-1. File->New->Project(or Module)
-2. 选择Spring Initializr，然后next，配置应该暂时不用管，继续next
-3. 选择需要的依赖：Web->Web,SQL->MySQL,SQL->JDBC,SQL->Mybatis,下一步
-4. 设置路径，就设置到当前的项目下就行了。
-5. finish
-* 第二步  搭建主要结构和配置文件（以book为例）
-1. 在com.example包下面分别创建service、controller、entity和dao（mapper）包
-2. entity下面定义book类
-3. dao包下定义一个BookMapper的接口，在内部定义一个返回值为List<Book>的findAll方法，类上面加上@Repository注解
-```
-@Reposity
-public interface BookMapper{
-    List<Book> findAll();   //方法就是这一句
-}
-```
-4. service包下面创建一个BookService接口，写一个同上的方法。再在包下创建一个impl包，在里面定义一个BookServiceImpl类，实现BookService接口，使用@Service注解，里面用@Autowried引入一个BookMapper对象，重写接口的方法，方法内部用bookMapper调用findAll方法
+## 个人信息
 
-```
-@Service
-public class BookServiceImpl implements BookService {
+ - 唐凌/男/1996/18813298644/msldxy@163.com
+ - 华南理工大学软件学院
+ - Github：http://github.com/msldxy 
+ - 期望职位：Java工程师
+ - 期望薪资：面议
+ - 期望城市：成都
+ - 到岗时间：1周内到岗
 
-    @Autowired
-    private BookMapper bookMapper;
+<hr>
 
-    @Override
-    public List<Book> findAll() {
-        return bookMapper.findAll();
-    }
-}
-```
-5. 在controller定义一个BookController类，在里面定义一个BookController类，使用@RestController注解，里面用@Autowried引入一个BookService对象，定义一个方法，里面使用bookService调用findAll
-注意controller这里面，有一个注解是@RequestMapping，里面的参数就是到时候网址需要访问的地址，如果在类上面设置了，则该类里面所有方法都要在这个地址后面，如类上注解了("/book"),方法上面注解了("/list")，网址就需要/book/list才可以访问这个方法
+## 专业技能
+- 工具：starUML、xmind、Jmeter等；
+- 代码：有良好的编程习惯，对底层感兴趣，了解常用的数据结构及算法；
+- 前端相关：HTML、CSS、JavaScript、Jquery、VUE、element UI；
+- 后端框架：Spring、SpringMVC、Mybatis框架，了解Sring Security、Spring Boot、Spring Task、Spring Cloud等；
+- 架构：分布式架构Dubbo+zookeeper，
+- 熟悉linux常用命令；
+- 数据库相关：MySQL/redis/MongoDB；
+- 版本管理、文档和自动化部署工具：Svn/Git
 
-```
-@RestController
-@RequestMapping("/book")
-public class BookController {
+<hr>
 
-    @Autowired
-    private BookService bookService;
+## 工作经历
 
-    @RequestMapping("/list")
-    public List<Book> findAll(){
-        List<Book> books = bookService.findAll();
-        return books;
-    }
-}
-```
-6. 配置文件
-删除application.properties,创建application.yml和application-dev.yml
-appliction.yml
-    
-```
-spring:
-  profiles:
-    active: dev
-```
-application-dev.yml
+<h3 style="float:left;">广州华多网络科技有限公司</h3><h3 style="float:right;">2017年11月 ~ 2018年3月</h3>
+<br><br><br>
+岗位：黑盒测试<br>
+职责：<br>
+1. 参与测试用例编写与评审；<br>
+2. 执行部分模块的测试；<br>
+3. 提交以及跟踪bug；<br><br>
 
-```
-server:
-  port: 8080
+<h3 style="float:left;">传智播客</h3><h3 style="float:right;">2019年3月 ~ 2019年9月</h3>
+<br><br><br>
+岗位：Java学徒<br>
+职责：<br>
+1. 对JavaSE进行系统的学习<br>
+2. 学习了Javaweb的基础知识<br>
+3. 了解学习了主流框架<br>
+4. 完成项目的编写和部署。
+<hr>
 
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bookman
-    username: root
-    password: msldxy
+## 项目经验
 
-mybatis:
-  mapper-locations: classpath:com/example/mapping/*Mapper.xml
-  type-aliases-package: com.example.entity
+### 开心斗
 
-#showSql
-logging:
-  level:
-    com:
-      example:
-        mapper : debug
-```
-其中datasource下面的几个参数是自己数据库的参数，可以根据之前的jdbc的几个参数填过来。
+负责一款手机软件“开心斗”的测试，这款软件目前主要是一个玩小游戏的平台。对从6.0.0到6.5.0的版本中的包括首页广场、IM、个人信息等页面功能进行了测试：
+* 根据产品文档编写测试用例并评审；
+* 使用TestLink执行测试操作；
+* 通过jira进行bug的管理：提交以及定期跟踪和验证；
+* 在产品上“快乐大本营”推广之前一个月，临时组成一个小组，对大约30个小游戏进行了包括功能测试、兼容测试等，最后成功发布。
 
-在resources目录下创建文件夹com/example/dao,再在这下面创建文件BookMapper.xml
-```
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.dao.BookMapper">
+### 青橙
 
-    <select id="findAll" resultType="com.example.entity.Book">
-        select * from book
-    </select>
+开发环境：IDEA+Tomcat+Mysql+Redis+Maven+JDK8
+技术选型：SpringMvc+Spring+Mybatis+Dubbox+Zookeeper+Redis
+项目周期：2018.8-2019.5
+项目描述：青橙购物平台是一个 B2B2C 数据商品平台，主要业务是为人们提供一个选购物品或者销售物品的平台。系统采用 SOA 分布式架构，将不同的功能模块划分为多个子系统，其中包括网站前台系统，搜索系统，订单系统，购物车系统，用户系统，CAS 单点登陆，管理员系统等。系统采用 ssm+dubbox+zookeeper 实现 SOA 架构以及后端功能模块，同时也使用其他多种技术完成整个项目的功能，比如 redis，ActiveMq，solr 全文检索技术等。
+职责描述:
+1. 后台数据统计：利用Spring Task创建定时任务，在每晚1点执行统计，将前一天的销售数据统计出来并存入数据库；
+2. 数据报表：使用了echarts来展现相应时段的销售数据，通过漏斗图和折线图展示下单量和成交率等；
+3. 登录拦截：后台使用Spring Security进行登录拦截，如果未登录只能进入到登陆页面；
 
-</mapper>
-```
-7. 在DemoApplication的主类上面加上@MapperScan("com.example.dao")注解
-8. 运行DemoAplication
-9. 打开浏览器，访问localhost:8080/book/list
+<hr>
 
+## 致谢
+感谢您花时间阅读我的简历，期待能有机会和您共事。
 
-## 闲谈
-一般创建项目，java下面都是创建一个包，通常情况下都是域名反着，比如如果百度公司的，就用com.baidu。当然了，我自己用的的com.msldxy(说不定以后还真会有呢#{手动狗头})
-然后再在这个包下面创建各个包，有
-* entity(domain)主要用于封装实体
-* dao(mapper)   dao层即持久层，主要用于对数据库的操作
-* service       service业务层，主要用于处理业务逻辑等
-* controller    控制层(其实我也不知道叫啥hhhhh随便叫的)，这个层主要用于和前端的交互
-
-以上的几个组件，前端访问会通过controller，调用service的方法，而service处理业务逻辑，再将需要进行数据库操作的方法来调用dao的方法，dao层只有接口，相应的方法在resources下面对应的*Mapper.xml映射文件中，映射文件中，mapper的属性namespace是对应Mapper类的路径。里面有select、update等与数据库对应操作的标签,注意标签的id一定要和Mapper中对应的方法名一致，标签内就是数据库的语句了
-
-
-### emmmmm大概先说这么多吧，将就着看一看，如果有什么不懂的就问，希望你能不被淘汰鸭
