@@ -3,7 +3,7 @@
 ## 个人信息
 
  - 唐凌/男/1996/18813298644/msldxy@163.com
- - 华南理工大学软件学院
+ - 华南理工大学/软件工程
  - Github：http://github.com/msldxy 
  - 期望职位：Java工程师
  - 期望薪资：面议
@@ -36,7 +36,7 @@
 
 <h3 style="float:left;">传智播客</h3><h3 style="float:right;">2019年3月 ~ 2019年9月</h3>
 <br><br><br>
-岗位：Java学徒<br>
+岗位：Java培训<br>
 职责：<br>
 1. 对JavaSE进行系统的学习<br>
 2. 学习了Javaweb的基础知识<br>
